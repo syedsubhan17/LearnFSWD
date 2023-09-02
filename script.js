@@ -17,7 +17,9 @@ const obj = {
         pincode:'431401',
     },
     hobbies: ['netflix','marvel','FSWD'],
-    oldObject:obj1
+    // obj1:obj1, //this is example of predefined object
+    marvelmovies: 'captainamerica',
 }
 
-console.log(obj)
+console.log(obj.hobbies)
+console.log(obj['hobbies'])
