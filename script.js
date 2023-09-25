@@ -6,13 +6,14 @@ const list = document.querySelector(`ul`)
 const input = document.querySelector(`input`)
 
 const toggleTheme = ()=>{
-    if(body.classList.contains('light')){
-        body.classList.remove('light')
-        body.classList.add('dark')
-    }else{
-        body.classList.remove('dark')
-        body.classList.add('light')
-    }
+    body.classList.toggle('dark')
+    // if(body.classList.contains('light')){
+    //     body.classList.remove('light')
+    //     body.classList.add('dark')
+    // }else{
+    //     body.classList.remove('dark')
+    //     body.classList.add('light')
+    // }
 }
 
 // console.log(heading.classList)
