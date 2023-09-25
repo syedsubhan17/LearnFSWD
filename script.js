@@ -5,6 +5,21 @@ const content = document.querySelector(`p`)
 const list = document.querySelector(`ul`)
 const input = document.querySelector(`input`)
 
+const toggleTheme = ()=>{
+    if(body.classList.contains('light')){
+        body.classList.remove('light')
+        body.classList.add('dark')
+    }else{
+        body.classList.remove('dark')
+        body.classList.add('light')
+    }
+}
+
+// console.log(heading.classList)
+// heading.classList.add('red')
+// heading.classList.add('sm')
+// console.log(heading.classList)
+
 // todos.forEach((todo)=>{
 //     const li = document.createElement(`li`)
 //     li.innerHTML=todo
@@ -12,16 +27,16 @@ const input = document.querySelector(`input`)
 //     list.appendChild(li)
 // })
 
-const handleClick = ()=>{
-    const data = input.value
-    if(data===''){
-        return alert('Please enter the value or item')
-    }
-    const li = document.createElement(`li`)
-    li.innerHTML=input.value // here "value is ised to take input"
-    console.log(li)
-    list.appendChild(li)
-}
+// const handleClick = ()=>{
+//     const data = input.value
+//     if(data===''){
+//         return alert('Please enter the value or item')
+//     }
+//     const li = document.createElement(`li`)
+//     li.innerHTML=input.value // here "value is ised to take input"
+//     console.log(li)
+//     list.appendChild(li)
+// }
 
 // use to learn click
 // const handleClick = ()=>{
@@ -43,3 +58,8 @@ const handleClick = ()=>{
 // console.log(heading.innerHTML) // this show output of what is inside heading
 // console.log(heading.textContent) // this show output what is text content init.
 
+
+//     const li = document.createElement(`li`)
+//     li.innerHTML=todo
+//     console.log(li)
+//     list.appendChild(li)

@@ -33,10 +33,25 @@
       .blue{
         color: dodgerblue;
       }
+      .dark{
+        background-color: #333;
+        color: #fff;
+      }
+      .light{
+        background-color: #fff;
+        color: #333;
+      }
+      body h1{
+        color: #111;
+      }
+      body.dark h1{
+        color: rgb(34, 184, 34);
+      }
     </style>
 </head>
-<body>
-    <h1>Todo List</h1>
+<body class="light">
+    <button onclick="toggleTheme()" class="toggle">Change Theme</button>
+    <h1 class="a b somthing">Todo List</h1>
     <input type="text" name="" id="">
     <button onclick="handleClick()">Add</button>
     <ul>
