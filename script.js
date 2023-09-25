@@ -1,6 +1,38 @@
 const heading = document.querySelector(`h1`)
 const body = document.querySelector(`body`)
 const content = document.querySelector(`p`)
+// const todos = ['task1','task 2', 'task 3']
+const list = document.querySelector(`ul`)
+const input = document.querySelector(`input`)
+
+// todos.forEach((todo)=>{
+//     const li = document.createElement(`li`)
+//     li.innerHTML=todo
+//     console.log(li)
+//     list.appendChild(li)
+// })
+
+const handleClick = ()=>{
+    const data = input.value
+    if(data===''){
+        return alert('Please enter the value or item')
+    }
+    const li = document.createElement(`li`)
+    li.innerHTML=input.value // here "value is ised to take input"
+    console.log(li)
+    list.appendChild(li)
+}
+
+// use to learn click
+// const handleClick = ()=>{
+//     console.log('clicked')
+// }
+
+// const li = document.createElement(`li`)
+// const textInsideli = document.createTextNode('task 4')
+// li.appendChild(textInsideli)
+// // li.innerHTML = 'task 4'           
+// console.log(li)
 
 // now to make changes
 // heading.innerHTML = "add stuff into heading"  // this 1 method to make changes
@@ -11,20 +43,10 @@ const content = document.querySelector(`p`)
 // console.log(heading.innerHTML) // this show output of what is inside heading
 // console.log(heading.textContent) // this show output what is text content init.
 
-// learning setInterval
-// const log = ()=>{
-//     console.log(`i'm a log`)
-// }
-
-// setInterval(log, 1000)
-
-// // in js we have global date
-// const date = new Date()
-// console.log(date) // this is teached on Thus 1 jun 23 19:54:16 // and iam learnig mon 25sep23 17:27:--
-
-// Lets create a counter
-let count = 0;
-const log = ()=>{
-    heading.innerHTML = count++
-}
-setInterval(log, 1000)
+// create random color generator
+// setInterval(()=>{
+//     var randomColor = Math.floor(Math.random()*16777215).toString(16);
+//         body.style=`
+//         background:#${randomColor};
+//         `
+// },100)
