@@ -43,10 +43,3 @@ const handleClick = ()=>{
 // console.log(heading.innerHTML) // this show output of what is inside heading
 // console.log(heading.textContent) // this show output what is text content init.
 
-// create random color generator
-// setInterval(()=>{
-//     var randomColor = Math.floor(Math.random()*16777215).toString(16);
-//         body.style=`
-//         background:#${randomColor};
-//         `
-// },100)
