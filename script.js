@@ -3,7 +3,7 @@ const textbox = document.querySelector(`h1 span`);
 const heading = document.querySelector(`h1`);
 
 let count = 0;
-body.addEventListener('click',()=>{
+heading.addEventListener('click',()=>{
     console.log("you Clicked")
     textbox.innerHTML = ++count;
 })
