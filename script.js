@@ -5,5 +5,5 @@ const heading = document.querySelector(`h1`);
 let count = 0;
 heading.addEventListener('click',()=>{
     console.log("you Clicked")
-    textbox.innerHTML = ++count;
+    textbox.innerHTML = count++;
 })
