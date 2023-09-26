@@ -1,44 +1,27 @@
-const body = document.querySelector(`body`);
-const textbox = document.querySelector(`h1 span`);
-const heading = document.querySelector(`h1`);
-const input = document.querySelector(`input`);
+const progressbar = document.querySelector("#progress")
+const container = document.querySelector(".content")
+// console.log(progressbar)
+const contentHeight =  container.scrollHeight
+const html = document.querySelector(`html`)
+const scrollHeight = document.documentElement.scrollHeight
 
-let count = 0;
-heading.addEventListener('click',(event)=>{
-    console.log(event)
-    textbox.innerText = ++count;
+console.log(html.clientHeight)
+// const bodyHeight = window.innerHeight
+// console.dir(container)
+
+//  this will increase length of progress bar as we scroll down
+window.addEventListener("scroll",()=>{
+    const scrollTop = window.scrollY
+    console.log(scrollTop) // this will give how mush you scrolled
+    const clientHeight = document.documentElement.clientHeight
+    const scrolled = scrollTop / (scrollHeight) * 100
+
+    
+    progressbar.style.width = `${scrolled}%`
 })
+    // document.Element return you the HTML
+// look what document. do:
+console.log(document.documentElement)
+console.log(document.querySelector(`html`))
 
-// lets learn about event listener focus:
-// input.addEventListener('focus',(e)=>{
-//     console.log('input is focused')
-// })
-
-// focus in and out:
-// input.addEventListener('focusin',(e)=>{
-//     console.log('input is focused')
-
-// })
-// input.addEventListener('focusout',(e)=>{
-//     console.log('input is out of focus')
-// })
-
-//  this can track the tab change
-window.addEventListener('focus',(e)=>{
-    console.log('tab changed detected')
-})
-
-// another event listener that is blur:
-window.addEventListener('blur',(e)=>{
-    console.log('blur changed detected')
-})
-
-// another event listener resize
-window.addEventListener('resize',(e)=>{
-    console.log('resize detected') // this will track the resizing the window
-})
-
-// lets track the scroll 
-window.addEventListener('scroll',(e)=>{
-    console.log('scroll detected') // this will track the resizing the window
-})
+console.log(document.documentElement.scrollHeight) // it will give you whole height
