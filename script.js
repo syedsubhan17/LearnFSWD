@@ -1,8 +1,25 @@
 const addTodoBtn = document.querySelector(`button.add-todo`);
 const input = document.querySelector('input.add-todo');
 
+// strucuture of todo
+/*
+title: string
+completed: boolean
+id: string
+*/
 
-let todos = [];
+let todos = [
+    {
+        id: "r3lw42",
+        title: "learn Js",
+        completed: false,
+    }, //add elements
+    {
+        id: "r3lw43",
+        title: "Learn React",
+        completed: true,
+    }
+];
 
 const randomId = () => {
     var firstPart = (Math.random() * 46656) | 0;
@@ -12,4 +29,7 @@ const randomId = () => {
     return firstPart + secondPart;
   };
   console.log(randomId());
-  
+
+  const addTodo = () => {};
+
+  addTodoBtn.addEventListener("click", () => {});
