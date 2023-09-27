@@ -142,6 +142,13 @@ const randomId = () => {
     renderList();
   };
 
+//   added the option "mark as complete"
+  const markAsComplete = (id) => {
+    const todo = todos.find((todo) => todo.id === id);
+    todo.completed = !todo.completed;
+    renderList();
+  };
+
   addTodoBtn.addEventListener("click", addTodo);
 
   renderList();
