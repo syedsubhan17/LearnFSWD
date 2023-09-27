@@ -47,7 +47,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
   </div>
   <div onClick="handleEdit('${id}')" class="text-slate-500 line-through">${title}</div>
 </div>
-<div onClick="handleDelete('${id}')"  >
+<div onClick="handleDelete('${id}')"  > //this is added to delete
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -87,7 +87,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
   </div>
   <div onClick="handleEdit('${id}')">${title}</div>
 </div>
-<div onClick="handleDelete('${id}')" >
+<div onClick="handleDelete('${id}')" > //it wii call handle delete option
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -113,15 +113,35 @@ const randomId = () => {
     return firstPart + secondPart;
   };
 
-  const renderlist = () => {
-    todos.forEach(todo=>{
+  const renderList = () => {
+    list.innerHTML = "";
+    todos.forEach((todo) => {
         const node = document.createElement("div");
-        node.innerHTML = generateTodo(todo.title,todo.completed);
+        node.innerHTML = generateTodo(todo.title, todo.completed);
         list.appendChild(node);
     })
-  }
-  renderlist();
-  
-  const addTodo = () => {};
+  };
 
-  addTodoBtn.addEventListener("click", () => {});
+  const addTodo = () => {
+    if (input.value === "") return alert("Please enter a todo");
+    const todo = {
+      id: randomId(),
+      title: input.value,
+      completed: false,
+    };
+    todos.push(todo);
+    localStorage.setItem('storedTodos', JSON.stringify(todos));
+    input.value = "";
+    renderList();
+  };
+
+//   added user delete option
+  const handleDelete = (id) => {
+    const filteredTodos = todos.filter((todo) => todo.id !== id);
+    todos = filteredTodos;
+    renderList();
+  };
+
+  addTodoBtn.addEventListener("click", addTodo);
+
+  renderList();
