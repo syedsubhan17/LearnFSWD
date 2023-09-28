@@ -142,6 +142,17 @@ const randomId = () => {
     renderList();
   };
 
+
+// this is used  handle edit :
+const handleEdit = (id) => {
+  console.log(id);
+  const todo = todos.find((todo) => todo.id === id);
+  input.value = todo.title;
+  addTodoBtn.innerHTML = "Edit";
+  mode = "edit";
+  selectedId = id;
+};
+
 //   added the option "mark as complete"
   const markAsComplete = (id) => {
     const todo = todos.find((todo) => todo.id === id);
@@ -149,6 +160,6 @@ const randomId = () => {
     renderList();
   };
 
-  addTodoBtn.addEventListener("click", addTodo);
+  addTodoBtn.addEventListener("click", node ==='add'?addTodo:editTodo);
 
   renderList();
