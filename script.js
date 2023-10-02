@@ -140,7 +140,7 @@ const addTodo = () => {
   renderList();
 };
 
-//this i sused to delete
+//this is used to delete
 const handleDelete = (id) => {
   const filteredTodos = todos.filter((todo) => todo.id !== id);
   todos = filteredTodos;
@@ -190,4 +190,5 @@ document.addEventListener("keydown", (e) => {
     selectedId = null;
   }
 });
+
 renderList();
