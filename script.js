@@ -1,6 +1,6 @@
-const addTodoBtn = document.querySelector(`button.add-todo`);
-const input = document.querySelector('input.add-todo');
-const list = document.querySelector(".task")
+const addTodoBtn = document.querySelector("button.add-todo");
+const input = document.querySelector("input.add-todo");
+const list = document.querySelector("#tasks");
 
 // strucuture of todo
 /*
@@ -8,19 +8,19 @@ title: string
 completed: boolean
 id: string
 */
+const loadTodos = () => {
+  const todos = JSON.parse(localStorage.getItem('storedTodos'))
+  if(todos.length===0 || !todos){
+    return []
+  }else{
+    return todos
+  }
+}
 
-let todos = [
-    {
-        id: "r3lw42",
-        title: "learn Js",
-        completed: false,
-    }, //add elements
-    {
-        id: "r3lw43",
-        title: "Learn React",
-        completed: true,
-    }
-];
+let todos = loadTodos();
+
+let mode = "add",
+  selectedId = null;
 
 const generateTodo = ({ title, id, completed }) =>
   completed
@@ -47,7 +47,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
   </div>
   <div onClick="handleEdit('${id}')" class="text-slate-500 line-through">${title}</div>
 </div>
-<div onClick="handleDelete('${id}')"  > //this is added to delete
+<div onClick="handleDelete('${id}')"  >
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -87,7 +87,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
   </div>
   <div onClick="handleEdit('${id}')">${title}</div>
 </div>
-<div onClick="handleDelete('${id}')" > //it wii call handle delete option
+<div onClick="handleDelete('${id}')" >
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -106,44 +106,44 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
 </div>`;
 
 const randomId = () => {
-    var firstPart = (Math.random() * 46656) | 0;
-    var secondPart = (Math.random() * 46656) | 0;
-    firstPart = ("000" + firstPart.toString(36)).slice(-3);
-    secondPart = ("000" + secondPart.toString(36)).slice(-3);
-    return firstPart + secondPart;
+  var firstPart = (Math.random() * 46656) | 0;
+  var secondPart = (Math.random() * 46656) | 0;
+  firstPart = ("000" + firstPart.toString(36)).slice(-3);
+  secondPart = ("000" + secondPart.toString(36)).slice(-3);
+  return firstPart + secondPart;
+};
+
+const renderList = () => {
+  list.innerHTML =
+    todos.length === 0
+      ? `<div class='text-center text-blue-500' >Add todos to get started</div>`
+      : "";
+  todos.forEach((todo) => {
+    const node = document.createElement("div");
+    node.innerHTML = generateTodo(todo);
+    list.appendChild(node);
+  });
+};
+
+const addTodo = () => {
+  if (input.value === "") return alert("Please enter a todo");
+  const todo = {
+    id: randomId(),
+    title: input.value,
+    completed: false,
   };
+  todos.push(todo);
+  localStorage.setItem('storedTodos', JSON.stringify(todos));
+  input.value = "";
+  renderList();
+};
 
-  const renderList = () => {
-    list.innerHTML = "";
-    todos.forEach((todo) => {
-        const node = document.createElement("div");
-        node.innerHTML = generateTodo(todo.title, todo.completed);
-        list.appendChild(node);
-    })
-  };
+const handleDelete = (id) => {
+  const filteredTodos = todos.filter((todo) => todo.id !== id);
+  todos = filteredTodos;
+  renderList();
+};
 
-  const addTodo = () => {
-    if (input.value === "") return alert("Please enter a todo");
-    const todo = {
-      id: randomId(),
-      title: input.value,
-      completed: false,
-    };
-    todos.push(todo);
-    localStorage.setItem('storedTodos', JSON.stringify(todos));
-    input.value = "";
-    renderList();
-  };
-
-//   added user delete option
-  const handleDelete = (id) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== id);
-    todos = filteredTodos;
-    renderList();
-  };
-
-
-// this is used  handle edit :
 const handleEdit = (id) => {
   console.log(id);
   const todo = todos.find((todo) => todo.id === id);
@@ -153,13 +153,33 @@ const handleEdit = (id) => {
   selectedId = id;
 };
 
-//   added the option "mark as complete"
-  const markAsComplete = (id) => {
-    const todo = todos.find((todo) => todo.id === id);
-    todo.completed = !todo.completed;
-    renderList();
-  };
-
-  addTodoBtn.addEventListener("click", node ==='add'?addTodo:editTodo);
-
+const markAsComplete = (id) => {
+  const todo = todos.find((todo) => todo.id === id);
+  todo.completed = !todo.completed;
   renderList();
+};
+
+const editTodo = () => {
+  if (input.value === "") return alert("Please enter a todo");
+  const todo = todos.find((todo) => todo.id === selectedId);
+  todo.title = input.value;
+  renderList()
+  input.value = "";
+  selectedId=null;
+  mode="add"
+  addTodoBtn.innerHTML = "Add";
+};
+
+addTodoBtn.addEventListener("click", () =>
+  mode === "add" ? addTodo() : editTodo()
+);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    input.value = "";
+    addTodoBtn.innerHTML = "Add";
+    mode = "add";
+    selectedId = null;
+  }
+});
+renderList();
