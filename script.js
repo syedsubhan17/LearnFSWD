@@ -113,6 +113,7 @@ const randomId = () => {
   return firstPart + secondPart;
 };
 
+// this is for render your Todo List
 const renderList = () => {
   list.innerHTML =
     todos.length === 0
@@ -125,6 +126,7 @@ const renderList = () => {
   });
 };
 
+// add your Todo
 const addTodo = () => {
   if (input.value === "") return alert("Please enter a todo");
   const todo = {
@@ -138,12 +140,14 @@ const addTodo = () => {
   renderList();
 };
 
+//this i sused to delete
 const handleDelete = (id) => {
   const filteredTodos = todos.filter((todo) => todo.id !== id);
   todos = filteredTodos;
   renderList();
 };
 
+// this will help to edit in TODO
 const handleEdit = (id) => {
   console.log(id);
   const todo = todos.find((todo) => todo.id === id);
@@ -153,27 +157,31 @@ const handleEdit = (id) => {
   selectedId = id;
 };
 
+// this will show mark as complete
 const markAsComplete = (id) => {
   const todo = todos.find((todo) => todo.id === id);
   todo.completed = !todo.completed;
   renderList();
 };
 
+// if u hit add without entering Todo show alert
 const editTodo = () => {
   if (input.value === "") return alert("Please enter a todo");
   const todo = todos.find((todo) => todo.id === selectedId);
   todo.title = input.value;
-  renderList()
+  renderList() // this render list update the list
   input.value = "";
   selectedId=null;
-  mode="add"
+  mode="add" //this will reset the TODO
   addTodoBtn.innerHTML = "Add";
 };
 
+// this is button 
 addTodoBtn.addEventListener("click", () =>
   mode === "add" ? addTodo() : editTodo()
 );
 
+// this is a event listerner
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     input.value = "";
