@@ -38,7 +38,8 @@
 
 // c()
 
-setTimeout(()=>console.log('hi'),1000) //1k = 1sec
-setTimeout(()=>console.log('bye'),2000)// this is 2sec 
+setTimeout(()=>console.log('hi'),3000) 
+//1k = 1sec
+setTimeout(()=>console.log('bye'),1000)
 
 console.log('12e')
