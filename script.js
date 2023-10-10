@@ -5,8 +5,12 @@
 // console.log(2)
 // console.log(3)
 
-// Let see set Time out function
-const cb = ()=>{
-    console.log('callback executed')
-}
-setTimeout(cb,5000) //it give output after set of interval
+console.log(1)
+setInterval(()=>{
+    console.log(2)
+},5000)
+console.log(3)
+
+setTimeout(()=>{
+    console.log(4)
+},0)
