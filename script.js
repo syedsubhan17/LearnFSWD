@@ -10,7 +10,9 @@
 //     console.log(response)
 // },1000)
 
-// this is a responce object
-const response = fetch('https://jsonplaceholder.typicode.com/todos')
-
-response.then(data => console.log(data))
+fetch('https://jsonplaceholder.typicode.com/todos')
+.then(response=>{
+    console.log(response)
+    const data = response.json()
+    console.log(data)
+})
