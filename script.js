@@ -15,4 +15,5 @@ fetch('https://jsonplaceholder.typicode.com/todos')
     console.log(response)
     const data = response.json()
     console.log(data)
+    data.then(newData=>{console.log(newData)}) //give soo many arrays
 })
