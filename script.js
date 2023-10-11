@@ -10,12 +10,7 @@
 //     console.log(response)
 // },1000)
 
-const fetchTodos = () => new Promise((resolve,reject) => {
-    setTimeout(()=>{
-        // resolve([{id:1, title:'todo1'},{id:2, title:'todo2'}])
-        reject(new Error('someThing went wrong'))
-    },3000)
-})
+// this is a responce object
+const response = fetch('https://jsonplaceholder.typicode.com/todos')
 
-fetchTodos().then((data)=>{console.log(data)})
-.catch((err)=>{console.log(err)})
+response.then(data => console.log(data))
