@@ -11,3 +11,19 @@ fetch('https://jsonplaceholder.typicode.com/todos')
     })
 })
 .catch(err=>console.log(err))
+
+const fetchData = async()=>{
+    try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/todos')
+    console.log(res)
+    const data = await res.json();
+    console.log(data);
+    }
+    catch{
+        console.log(error);
+    }
+    finally {
+        console.log('finally')
+    }
+}
+fetchData()
