@@ -44,7 +44,7 @@ const searchRecipe = async () => {
      console.log(data);
 
   } catch (error) {
-     // Log any errors that occur during the fetch operation
+     // Log any errors that  occur during the fetch operation
      console.log(error);
   } finally {
      // Re-enable the button and restore its original text
