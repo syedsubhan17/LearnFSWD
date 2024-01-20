@@ -28,7 +28,7 @@ const generateRecipeCard = ({title,imageUrl,recipeUrl,ingredientsArray})=>`
 
 const searchRecipe = async () => {
   try {
-     // Disable the button and update its text during the search
+     // Disable  the  button  and  update  its  text  during  the  search
      button.disabled = true;
      button.textContent = 'Searching...';
 
@@ -42,7 +42,7 @@ const searchRecipe = async () => {
 
      // Log the API response data
      console.log(data);
-     
+
   } catch (error) {
      // Log any errors that occur during the fetch operation
      console.log(error);
