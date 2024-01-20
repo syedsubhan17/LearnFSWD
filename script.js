@@ -24,7 +24,7 @@ const generateRecipeCard = ({title,imageUrl,recipeUrl,ingredientsArray})=>`
         </a>
     </div>
 </div>
-`
+`;
 
 const searchRecipe = async () => {
   try {
